@@ -14,13 +14,13 @@ return array(
 	'auth' => array(
 		'allow_anonymous' => 'Sta bezoekers toe om artikelen te lezen van de standaard gebruiker (%s)',
 		'allow_anonymous_refresh' => 'Sta bezoekers toe om de artikelen te vernieuwen',
-		'api_enabled' => 'Sta <abbr>API</abbr> toegang toe <small>(nodig voor mobiele apps)</small>',
+		'api_enabled' => 'Sta <abbr>API</abbr> toegang toe <small>(nodig voor mobiele apps and sharing user queries)</small>',	// DIRTY
 		'form' => 'Web formulier (traditioneel, JavaScript vereist)',
 		'http' => 'HTTP (voor gevorderde gebruikers met HTTPS)',
 		'none' => 'Geen (gevaarlijk)',
 		'title' => 'Authenticatie',
-		'token' => 'Authenticatie teken',
-		'token_help' => 'Sta toegang toe tot de RSS uitvoer van de standaard gebruiker zonder authenticatie:',
+		'token' => 'Hoofdauthenticatietoken',
+		'token_help' => 'Geeft toegang tot alle RSS-uitvoer van de gebruiker en kan feeds verversen zonder authenticatie:',
 		'type' => 'Authenticatie methode',
 		'unsafe_autologin' => 'Sta onveilige automatische log in toe met het volgende formaat: ',
 	),
@@ -116,6 +116,7 @@ return array(
 		'description' => 'Beschrijving',
 		'disabled' => 'Uitgeschakeld',
 		'empty_list' => 'Er zijn geïnstalleerde uitbreidingen',
+		'empty_list_help' => 'Check the logs to determine the reason behind the empty extension list.',	// TODO
 		'enabled' => 'Ingeschakeld',
 		'latest' => 'Geïnstalleerd',
 		'name' => 'Naam',
@@ -193,6 +194,9 @@ return array(
 			'enabled' => '<a href="./?a=tos">is ingeschakeld</a>',
 			'help' => 'How to <a href="https://freshrss.github.io/FreshRSS/en/admins/12_User_management.html#enable-terms-of-service-tos" target="_blank">algemene voorwaarden inschakelen</a>',
 		),
+		'websub' => array(
+			'help' => 'Over <a href="https://freshrss.github.io/FreshRSS/en/users/WebSub.html" target="_blank">WebSub</a>',
+		),
 	),
 	'update' => array(
 		'_' => 'Versie controle',
@@ -210,7 +214,7 @@ return array(
 			'latest' => 'Stabiele release (“latest”)',
 		),
 		'title' => 'Vernieuw systeem',
-		'viaGit' => 'Update via git and Github.com gestart',
+		'viaGit' => 'Update via git and GitHub.com gestart',
 	),
 	'user' => array(
 		'admin' => 'Beheerder',

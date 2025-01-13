@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -17,10 +18,6 @@ use PHPMailer\PHPMailer\Exception;
  * $this->view->_path('user_mailer/email_need_validation.txt.php')
  * ```
  *
- * Minz_Mailer uses the PHPMailer library under the hood. The latter requires
- * PHP >= 5.5 to work. If you instantiate a Minz_Mailer with PHP < 5.5, a
- * warning will be logged.
- *
  * The email is sent by calling the `mail` method.
  */
 class Minz_Mailer {
@@ -38,10 +35,19 @@ class Minz_Mailer {
 	private int $debug_level;
 
 	/**
-	 * Constructor.
+	 * @phpstan-param class-string|'' $viewType
+	 * @param string $viewType Name of the class (inheriting from Minz_View) to use for the view model
+	 * @throws Minz_ConfigurationException
 	 */
-	public function __construct () {
-		$this->view = new Minz_View();
+	public function __construct(string $viewType = '') {
+		$view = null;
+		if ($viewType !== '' && class_exists($viewType)) {
+			$view = new $viewType();
+			if (!($view instanceof Minz_View)) {
+				$view = null;
+			}
+		}
+		$this->view = $view ?? new Minz_View();
 		$this->view->_layout(null);
 		$this->view->attributeParams();
 
